@@ -1,6 +1,6 @@
 <template>
     <div>
-        About
+        Register
     </div>
 </template>
 <script>

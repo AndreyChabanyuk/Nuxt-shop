@@ -1,6 +1,6 @@
 <template>
     <div>
-        About
+        Restore
     </div>
 </template>
 <script>

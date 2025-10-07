@@ -1,7 +1,21 @@
 :root {
-    --font: 'Roboto', sans-serif;
+	--font: 'Roboto', sans-serif;
+	--color-accent: #a18a68;
+	--color-black: #000000;
+	--color-black-hover: #1a1717;
+	--color-white: #d8d8d8;
+	--color-grey: #707070;
+	--color-white-light: #ffffff;
 }
 
 body {
-    font-family: var(--font)
+	font-family: var(--font);
+}
+
+h1 {
+    color: var(--color-black);
+	font-weight: 500;
+	font-size: 33px;
+	line-height: 43px;
+	text-align: center;
 }
