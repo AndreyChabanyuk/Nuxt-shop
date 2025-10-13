@@ -3,8 +3,10 @@
         Login
     </div>
 </template>
-<script>
-
+<script lang="ts" setup>
+definePageMeta({
+    layout: "auth"
+})
 </script>
 <style lang="">
     

@@ -7,7 +7,8 @@
 </template>
 <script lang="ts" setup>
 function openAbout() {
-    navigateTo("/about")
+    
+    setPageLayout('auth')
 }
 </script>
 <style lang="sass">
