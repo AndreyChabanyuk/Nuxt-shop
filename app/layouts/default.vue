@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div>Шапка</div>
+        <LayoutHeader />
         <slot />
-        <div>Подвал</div>
+        <LayoutFooter />
     </div>
 </template>
 <script>
