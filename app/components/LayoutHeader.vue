@@ -38,9 +38,9 @@
   margin-top: 48px
   margin-bottom: 48px
   border-bottom: 1px solid var(--color-little-grey)
-  
-.header__content
-  display: flex
+  &__content
+    display: flex
+
   
 .header__menu, .header__icons
   display: flex

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex">
         главная
       <!--   <IconTwitter /> -->
         <nuxt-link to="/about">About</nuxt-link>

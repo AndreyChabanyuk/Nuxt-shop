@@ -1,11 +1,11 @@
 <template>
-    <input v-model="data" class="input" :class="variant"  >
+    <input v-model="data"  :class="[$style.variant, $style.input]"  >
 </template>
 <script lang="ts" setup>
     const data = defineModel<string>()
     defineProps<{ variant?: "gray" | "black"}>()
 </script>
-<style lang="sass" scoped>
+<style lang="sass" scoped module>
 .input
   background: none
   padding: 12px 0

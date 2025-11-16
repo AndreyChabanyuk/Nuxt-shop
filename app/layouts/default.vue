@@ -1,13 +1,9 @@
 <template>
-    <div>
-        <LayoutHeader />
-        <slot />
-        <LayoutFooter />
-    </div>
+	<div>
+			<LayoutHeader />
+		<slot />
+		<LayoutFooter />
+	</div>
 </template>
-<script>
-
-</script>
-<style lang="">
-    
-</style>
+<script></script>
+<style lang=""></style>
