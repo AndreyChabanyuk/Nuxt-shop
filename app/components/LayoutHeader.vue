@@ -1,16 +1,17 @@
 <template>
 	<div class="header">
-    <div class="header__logo">
-    <NuxtLink to="/">
-      <IconLogo />
-    </NuxtLink>
-    </div>
+		<div class="header__logo">
+			<NuxtLink to="/">
+				<IconLogo />
+			</NuxtLink>
+		
+		</div>
 		<div class="header__content">
 			<div class="header__menu">
-				<nuxt-link to="/catalog">Магазин</nuxt-link>
+			  <nuxt-link to="/catalog">Каталог</nuxt-link>
 				<nuxt-link to="/about">О нас</nuxt-link>
 			</div>
-      <div class="header__hr"/>
+			<div class="header__hr" />
 			<div class="header__icons">
 				<nuxt-link to="#">
 					<Icon name="icons:search" size="21px" />
@@ -31,6 +32,7 @@
 <script lang="ts" setup></script>
 <style lang="sass">
 .header
+  padding: 0 16px
   margin: 0 auto
   max-width: 1248px
   display: flex
@@ -41,7 +43,8 @@
   &__content
     display: flex
 
-  
+
+
 .header__menu, .header__icons
   display: flex
   align-items: center
@@ -51,7 +54,7 @@
 
 .header__menu, .header__logo, .header__icons
   padding-bottom: 48px
-  
+
 
 .header__icons
   gap: 40px
@@ -70,5 +73,4 @@ a.router-link-active
   line-height: 27px
   color: var(--color-black)
   text-decoration: none
-  
 </style>

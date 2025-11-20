@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 		token: '',
 		public: {
 			apiurl: '',
+			imageurl: ''
 		},
 	},
 	postcss: {

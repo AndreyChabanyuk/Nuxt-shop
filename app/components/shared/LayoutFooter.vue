@@ -34,6 +34,7 @@
 <style lang="sass" scoped>
 
 .footer
+  padding: 0 16px
   margin: 0 auto
   max-width: 1248px
   gap: 50px

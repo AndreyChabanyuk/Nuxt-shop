@@ -2,7 +2,7 @@
     <div class="flex">
         главная
       <!--   <IconTwitter /> -->
-        <nuxt-link to="/about">About</nuxt-link>
+        
         <button @click="openAbout">Перейти</button>
         <InputField variant="black" placeholder="Введите имя"/>
     </div>
