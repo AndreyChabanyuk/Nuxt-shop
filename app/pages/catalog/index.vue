@@ -5,7 +5,11 @@
         <h1 class="left">Каталог товаров</h1>
         <div class="catalog">
             <div class="catalog__filter">
-                <SelectField v-model="select" :options="allCategories" />
+                <div class="catalog__search">
+                    <InputField v-model="search" variant="gray" placeholder="Поиск..."/>
+                    <Icon name="icons:search" size="18px"/>
+                </div>
+                <SelectField v-model="category_id" :options="allCategories" />
             </div>
             <div class="catalog__grid">
                 <CatalogCard v-for="product in productsData?.products" :key="product.id" :product="product" />
@@ -19,32 +23,55 @@ import CatalogCard from '~/components/shared/CatalogCard.vue';
 import type { GetProductsResponse } from '~/interfaces/product.interface';
 import type { GetCategoriesResponse } from '~/interfaces/category.interface'
 const config = useRuntimeConfig()
-const select = ref('Категории')
+const route = useRoute()
+const category_id = ref(route.query.category_id?.toString() || "")
+const search = ref(route.query.search?.toString() || "")
+const query = computed(() => ({
+    limit: route.query.limit ?? 20,
+    offset: route.query.offset ?? 0,
+    category_id: route.query.category_id || undefined,
+    search: route.query.search
+}
+))
+const router = useRouter()
+
+watchEffect(() => {
+    router.replace({query: {category_id: category_id.value, search: search.value}})
+})
 
 const API_URL = config.public.apiurl
 const { data: productsData } = await useFetch<GetProductsResponse>( API_URL + '/products',{
-    query: {
-        limit: 20,
-        offset: 0
-    }
+    query
 });
-const { data: categoriesData } = await useFetch<GetCategoriesResponse>( API_URL + '/categories',{
+const { data: categoriesData } = await useFetch<GetCategoriesResponse>(API_URL + '/categories',{
 });
-const firstCategory = {id: 0, name: 'Категории', alias: 'category'}
+const firstCategory = {id: "", name: 'Категории', alias: 'category'}
 const allCategories = computed(() => {
     return  [firstCategory, ...(categoriesData?.value?.categories ?? [])] 
 })
 </script>
 <style scoped lang="sass">
+.left
+  margin-bottom: 30px
 .catalog 
   display: flex
   gap: 36px
 .catalog__filter
   width: 260px
+  display: flex
+  flex-direction: column
+  gap: 24px
 
 .catalog__grid
   display: grid
   width: 100%
   gap: 24px 12px
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))
+
+.catalog__search
+    position: relative
+.catalog__search .iconify
+    position: absolute
+    top: 12px
+    right: 5px
 </style>
