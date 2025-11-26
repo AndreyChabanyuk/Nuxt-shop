@@ -13,7 +13,7 @@ export default defineNuxtConfig({
 		token: '',
 		public: {
 			apiurl: '',
-			imageurl: ''
+			imageurl: '',
 		},
 	},
 	postcss: {
@@ -56,5 +56,7 @@ export default defineNuxtConfig({
 		'@nuxt/scripts',
 		'@nuxt/icon',
 		'@nuxtjs/tailwindcss',
+		'@pinia/nuxt',
+		
 	],
 })

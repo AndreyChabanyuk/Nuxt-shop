@@ -22,10 +22,12 @@ import SelectField from '~/components/shared/SelectField.vue';
 import CatalogCard from '~/components/shared/CatalogCard.vue';
 import type { GetProductsResponse } from '~/interfaces/product.interface';
 import type { GetCategoriesResponse } from '~/interfaces/category.interface'
+import { useDebounceFn } from '@vueuse/core'
 const config = useRuntimeConfig()
+const API_URL = config.public.apiurl
 const route = useRoute()
-const category_id = ref(route.query.category_id?.toString() || "")
-const search = ref(route.query.search?.toString() || "")
+const category_id = ref("")
+const search = ref("")
 const query = computed(() => ({
     limit: route.query.limit ?? 20,
     offset: route.query.offset ?? 0,
@@ -35,11 +37,24 @@ const query = computed(() => ({
 ))
 const router = useRouter()
 
-watchEffect(() => {
-    router.replace({query: {category_id: category_id.value, search: search.value}})
+const changeRoute = useDebounceFn((category_id, search) => {
+   if (!category_id.value && !search.value) {
+        router.replace({ query: {} })
+    } else {
+        router.replace({
+            query: {
+                ...(category_id.value && { category_id: category_id.value }),
+                ...(search.value && { search: search.value })
+            }
+        })
+    }
+}, 200)
+
+watch([category_id, search], () => {
+    changeRoute(category_id, search)
 })
 
-const API_URL = config.public.apiurl
+
 const { data: productsData } = await useFetch<GetProductsResponse>( API_URL + '/products',{
     query
 });

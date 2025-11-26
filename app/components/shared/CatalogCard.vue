@@ -1,12 +1,14 @@
 <template>
-	<NuxtLink class="card" :to="`/catalog/${product.id}`">
+	<NuxtLink class="card" :to="`/catalog/${product.id}`" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
 		<div
 			class="card__image"
 			:style="{
 			  	background: `url(${IMAGE_URL}${product.images[0]}) lightgray 50% / cover no-repeat`,
 			}">
-			<span class="card__discount">-{{ product.discount }}%</span>
-		</div>
+			<span v-if="product.discount > 0" class="card__discount">-{{ product.discount }}%</span>
+            <span v-else />
+            <AddFavorite :id="product.id" :is-shown="isHovered"/>
+        </div>
 		<div class="card__name">
 			{{ product.name }}
 		</div>
@@ -18,6 +20,7 @@ import type { Product } from '~/interfaces/product.interface'
 
 const config = useRuntimeConfig()
 const IMAGE_URL = config.public.imageurl
+const isHovered = ref(false)
 console.log(config.public.apiurl)
 console.log(IMAGE_URL)
 defineProps<{product: Product}>()
@@ -36,7 +39,9 @@ defineProps<{product: Product}>()
     min-width: 320px
     width: 100%
     padding: 16px
-
+    display: flex
+    justify-content: space-between
+    align-items: start
 .card__price
     font-size: 20px
     font-weight: 500
