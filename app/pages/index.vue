@@ -8,6 +8,7 @@
     </div>
 </template>
 <script lang="ts" setup>
+
 function openAbout() {
     setPageLayout('auth')
 }

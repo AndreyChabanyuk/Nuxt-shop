@@ -8,7 +8,7 @@ export default defineNuxtConfig({
 	routeRules: {
 		'/about': { prerender: true },
 	},
-	ssr: false,
+	ssr: true,
 	runtimeConfig: {
 		token: '',
 		public: {

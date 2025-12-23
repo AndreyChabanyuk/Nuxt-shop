@@ -12,8 +12,9 @@ import type { Product } from '~/interfaces/product.interface'
 
 const favoriteStore = useFavoritesStore()
 const products = ref<Product[]>()
-const config = useRuntimeConfig()
-const API_URL = config.public.apiurl
+const API_URL = useAPI()
+
+
 watchEffect(async () => {
 	if (Array.isArray(favoriteStore.favoriteIds)) {
 		const data = await Promise.all(

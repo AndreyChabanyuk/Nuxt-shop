@@ -4,7 +4,6 @@
 			<NuxtLink to="/">
 				<IconLogo />
 			</NuxtLink>
-		
 		</div>
 		<div class="header__content">
 			<div class="header__menu">

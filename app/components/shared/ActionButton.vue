@@ -1,8 +1,10 @@
 <template>
-	<button :class="['button',color]"><slot>Главная страница</slot></button>
+	<button :class="['button',color, style]"><slot>Главная страница</slot></button>
 </template>
 <script setup lang="ts">
-const { color = 'primary' } = defineProps<{ color?: 'primary' | 'ghost' }>()
+const { color = 'primary' } = defineProps<{ color?: 'primary' | 'ghost',
+  style: string
+}>()
 </script>
 
 <style scoped lang="sass">

@@ -23,8 +23,7 @@ import CatalogCard from '~/components/shared/CatalogCard.vue';
 import type { GetProductsResponse } from '~/interfaces/product.interface';
 import type { GetCategoriesResponse } from '~/interfaces/category.interface'
 import { useDebounceFn } from '@vueuse/core'
-const config = useRuntimeConfig()
-const API_URL = config.public.apiurl
+const API_URL = useAPI()
 const route = useRoute()
 const category_id = ref("")
 const search = ref("")
