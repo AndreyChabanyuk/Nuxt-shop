@@ -1,11 +1,15 @@
 <template>
     <div>
       Account
+      <NuxtLink href="/" @click="authStore.clearToken">Выход</NuxtLink>
     </div>
 </template>
-<script>
-
+<script setup lang="ts">
+  definePageMeta({
+    middleware: 'auth'
+  })
+const authStore = useAuthStore()
 </script>
-<style lang="">
+<style lang="sass">
     
 </style>

@@ -1,5 +1,6 @@
 <template>
-    <input v-model="data" class="input" :class="variant"  >
+    <input v-model="data" :class="[variant, 'input']" >
+    
 </template>
 <script lang="ts" setup>
     const data = defineModel<string>()
@@ -7,11 +8,11 @@
 </script>
 <style lang="sass" scoped>
 .input
+  width: 100%
   background: none
   padding: 12px 0
-  border: none
   color: var(--color-black)
-
+  outline: none     
 
 .input::placeholder 
   color: var(--color-grey)

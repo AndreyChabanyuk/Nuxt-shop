@@ -1,11 +1,7 @@
 <template>
-    <div>
-        About
-    </div>
+	<div>About</div>
 </template>
-<script>
-
+<script setup lang="ts">
+   console.log('About')
 </script>
-<style lang="">
-    
-</style>
+<style lang=""></style>
